@@ -229,14 +229,14 @@ if (certShowcaseTrigger) {
     if (!certModal) return;
     if (modalCertImg) {
       modalCertImg.src = 'assets/certificates.png';
-      modalCertImg.alt = 'Full Certificate Showcase Sheet';
+      modalCertImg.alt = 'Lembar Dokumentasi Sertifikat Resmi Eka Aderia Ningrum';
     }
     if (modalCertRole) modalCertRole.textContent = 'Official Documentation';
-    if (modalCertTitle) modalCertTitle.textContent = 'Full Certificate Showcase Sheet';
-    if (modalCertOrg) modalCertOrg.textContent = 'Universitas Ahmad Dahlan & Partners';
-    if (modalCertNo) modalCertNo.textContent = '13 Official Certificates';
+    if (modalCertTitle) modalCertTitle.textContent = 'Lembar Dokumentasi Sertifikat Resmi';
+    if (modalCertOrg) modalCertOrg.textContent = 'Universitas Ahmad Dahlan & Mitra';
+    if (modalCertNo) modalCertNo.textContent = '13 Sertifikat Terverifikasi';
     if (modalCertDate) modalCertDate.textContent = '2023 – 2026';
-    if (modalCertDesc) modalCertDesc.textContent = 'Complete verified documentation sheet showcasing Eka Aderia Ningrum’s achievements in journalism, leadership, event management, corporate internship, and academic workshops.';
+    if (modalCertDesc) modalCertDesc.textContent = 'Lembar dokumentasi resmi yang menampilkan 13 sertifikat pencapaian Eka Aderia Ningrum dalam bidang magang corporate, jurnalistik, kepemimpinan, event management, dan seminar akademik.';
     if (modalFullBtn) modalFullBtn.href = 'assets/certificates.png';
 
     certModal.classList.add('open');
