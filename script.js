@@ -164,21 +164,9 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   }
 }
 
-// Certificates Filtering & Lightbox Modal Interactivity
+// Certificate Filtering & Direct High-Res Preview
 const certFilterBtns = [...document.querySelectorAll('.cert-filter-btn')];
 const certCards = [...document.querySelectorAll('.cert-card')];
-const certModal = document.getElementById('certModal');
-const certModalClose = document.getElementById('certModalClose');
-const certShowcaseTrigger = document.getElementById('certShowcaseTrigger');
-
-const modalCertImg = document.getElementById('modalCertImg');
-const modalCertRole = document.getElementById('modalCertRole');
-const modalCertTitle = document.getElementById('modalCertTitle');
-const modalCertOrg = document.getElementById('modalCertOrg');
-const modalCertNo = document.getElementById('modalCertNo');
-const modalCertDate = document.getElementById('modalCertDate');
-const modalCertDesc = document.getElementById('modalCertDesc');
-const modalFullBtn = document.getElementById('modalFullBtn');
 
 // Filter tabs
 certFilterBtns.forEach(btn => {
@@ -193,75 +181,13 @@ certFilterBtns.forEach(btn => {
   });
 });
 
-// Open Modal for Certificate Cards
+// Click certificate card to open high-res image directly in a new tab
 certCards.forEach(card => {
+  card.style.cursor = 'pointer';
   card.addEventListener('click', () => {
-    if (!certModal) return;
-    const title = card.dataset.certTitle || '';
-    const no = card.dataset.certNo || '-';
-    const role = card.dataset.certRole || 'Verified';
-    const org = card.dataset.certOrg || '';
-    const date = card.dataset.certDate || '';
-    const desc = card.dataset.certDesc || '';
-    const imgSrc = card.dataset.certImg || 'assets/certificates.png';
-
-    if (modalCertImg) {
-      modalCertImg.src = imgSrc;
-      modalCertImg.alt = title;
+    const imgSrc = card.dataset.certImg;
+    if (imgSrc) {
+      window.open(imgSrc, '_blank', 'noopener,noreferrer');
     }
-    if (modalCertRole) modalCertRole.textContent = role;
-    if (modalCertTitle) modalCertTitle.textContent = title;
-    if (modalCertOrg) modalCertOrg.textContent = org;
-    if (modalCertNo) modalCertNo.textContent = no;
-    if (modalCertDate) modalCertDate.textContent = date;
-    if (modalCertDesc) modalCertDesc.textContent = desc;
-    if (modalFullBtn) modalFullBtn.href = imgSrc;
-
-    certModal.classList.add('open');
-    certModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
   });
-});
-
-// Showcase trigger opens full sheet view
-if (certShowcaseTrigger) {
-  certShowcaseTrigger.addEventListener('click', () => {
-    if (!certModal) return;
-    if (modalCertImg) {
-      modalCertImg.src = 'assets/certificates.png';
-      modalCertImg.alt = 'Lembar Dokumentasi Sertifikat Resmi Eka Aderia Ningrum';
-    }
-    if (modalCertRole) modalCertRole.textContent = 'Official Documentation';
-    if (modalCertTitle) modalCertTitle.textContent = 'Lembar Dokumentasi Sertifikat Resmi';
-    if (modalCertOrg) modalCertOrg.textContent = 'Universitas Ahmad Dahlan & Mitra';
-    if (modalCertNo) modalCertNo.textContent = '13 Sertifikat Terverifikasi';
-    if (modalCertDate) modalCertDate.textContent = '2023 – 2026';
-    if (modalCertDesc) modalCertDesc.textContent = 'Lembar dokumentasi resmi yang menampilkan 13 sertifikat pencapaian Eka Aderia Ningrum dalam bidang magang corporate, jurnalistik, kepemimpinan, event management, dan seminar akademik.';
-    if (modalFullBtn) modalFullBtn.href = 'assets/certificates.png';
-
-    certModal.classList.add('open');
-    certModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  });
-}
-
-function closeCertModal() {
-  if (!certModal) return;
-  certModal.classList.remove('open');
-  certModal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-}
-
-if (certModalClose) {
-  certModalClose.addEventListener('click', closeCertModal);
-}
-if (certModal) {
-  certModal.addEventListener('click', (e) => {
-    if (e.target === certModal) closeCertModal();
-  });
-}
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && certModal && certModal.classList.contains('open')) {
-    closeCertModal();
-  }
 });
