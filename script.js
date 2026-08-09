@@ -171,13 +171,14 @@ const certModal = document.getElementById('certModal');
 const certModalClose = document.getElementById('certModalClose');
 const certShowcaseTrigger = document.getElementById('certShowcaseTrigger');
 
-const modalCertSprite = document.getElementById('modalCertSprite');
+const modalCertImg = document.getElementById('modalCertImg');
 const modalCertRole = document.getElementById('modalCertRole');
 const modalCertTitle = document.getElementById('modalCertTitle');
 const modalCertOrg = document.getElementById('modalCertOrg');
 const modalCertNo = document.getElementById('modalCertNo');
 const modalCertDate = document.getElementById('modalCertDate');
 const modalCertDesc = document.getElementById('modalCertDesc');
+const modalFullBtn = document.getElementById('modalFullBtn');
 
 // Filter tabs
 certFilterBtns.forEach(btn => {
@@ -202,11 +203,11 @@ certCards.forEach(card => {
     const org = card.dataset.certOrg || '';
     const date = card.dataset.certDate || '';
     const desc = card.dataset.certDesc || '';
-    const bgPos = card.dataset.certBg || 'center';
+    const imgSrc = card.dataset.certImg || 'assets/certificates.png';
 
-    if (modalCertSprite) {
-      modalCertSprite.style.backgroundPosition = bgPos;
-      modalCertSprite.style.backgroundSize = '260% 260%';
+    if (modalCertImg) {
+      modalCertImg.src = imgSrc;
+      modalCertImg.alt = title;
     }
     if (modalCertRole) modalCertRole.textContent = role;
     if (modalCertTitle) modalCertTitle.textContent = title;
@@ -214,6 +215,7 @@ certCards.forEach(card => {
     if (modalCertNo) modalCertNo.textContent = no;
     if (modalCertDate) modalCertDate.textContent = date;
     if (modalCertDesc) modalCertDesc.textContent = desc;
+    if (modalFullBtn) modalFullBtn.href = imgSrc;
 
     certModal.classList.add('open');
     certModal.setAttribute('aria-hidden', 'false');
@@ -225,16 +227,17 @@ certCards.forEach(card => {
 if (certShowcaseTrigger) {
   certShowcaseTrigger.addEventListener('click', () => {
     if (!certModal) return;
-    if (modalCertSprite) {
-      modalCertSprite.style.backgroundPosition = 'center';
-      modalCertSprite.style.backgroundSize = 'contain';
+    if (modalCertImg) {
+      modalCertImg.src = 'assets/certificates.png';
+      modalCertImg.alt = 'Full Certificate Showcase Sheet';
     }
     if (modalCertRole) modalCertRole.textContent = 'Official Documentation';
     if (modalCertTitle) modalCertTitle.textContent = 'Full Certificate Showcase Sheet';
     if (modalCertOrg) modalCertOrg.textContent = 'Universitas Ahmad Dahlan & Partners';
-    if (modalCertNo) modalCertNo.textContent = '8 Official Certificates';
-    if (modalCertDate) modalCertDate.textContent = '2023 – 2025';
-    if (modalCertDesc) modalCertDesc.textContent = 'Complete verified documentation sheet showcasing Eka Aderia Ningrum’s achievements in journalism, leadership, event management, and financial seminars.';
+    if (modalCertNo) modalCertNo.textContent = '13 Official Certificates';
+    if (modalCertDate) modalCertDate.textContent = '2023 – 2026';
+    if (modalCertDesc) modalCertDesc.textContent = 'Complete verified documentation sheet showcasing Eka Aderia Ningrum’s achievements in journalism, leadership, event management, corporate internship, and academic workshops.';
+    if (modalFullBtn) modalFullBtn.href = 'assets/certificates.png';
 
     certModal.classList.add('open');
     certModal.setAttribute('aria-hidden', 'false');
